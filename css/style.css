@@ -22,11 +22,37 @@
     font-family: var(--font-primary);
 }
 
-
+body{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
 
 header{
     position: relative;
     background-color: var(--bg-primary);
+}
+
+main{
+    flex:1;
+    min-height: 80vh;
+}
+
+footer{
+    background-color: var(--bg-primary);
+    padding: 2rem;
+}
+
+footer * {
+    text-align: center;
+}
+
+footer div {
+    margin:1rem;
+}
+
+footer section {
+    margin: 1.5rem;
 }
 
 nav{
