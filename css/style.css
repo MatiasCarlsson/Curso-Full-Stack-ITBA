@@ -31,11 +31,13 @@ body{
 header{
     position: relative;
     background-color: var(--bg-primary);
+    min-height: 15vh;
 }
 
 main{
-    flex:1;
-    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    min-height: 85vh;
 }
 
 footer{
@@ -51,9 +53,6 @@ footer div {
     margin:1rem;
 }
 
-footer section {
-    margin: 1.5rem;
-}
 
 nav{
     display: flex;
@@ -122,6 +121,8 @@ nav{
     transition: all 0.2s ease;
     color: var(--color-primary);
     font-weight: bold;
+    font-size: 12pt;
+    line-height: 1.6;
 }
 
 .nav-links a:hover {
@@ -133,9 +134,11 @@ nav{
     align-items: center;
 }
 
-.titulo-principal {
+.title {
     color: var(--color-primary);
     font-size: 1.5rem;
+    letter-spacing: 0.1em;
+    font-weight: bold;
 }
 
 .logo {
@@ -143,8 +146,24 @@ nav{
     margin: 5px;
 }
 
+.hero {
+    position: relative;
+    flex: 1;
+    width: 100%;
+    overflow: hidden;
+}
+
+.hero-img {
+    position: absolute;
+    width: 100px;
+    top: 90%;
+    left: 0;
+    object-fit: cover;
+    z-index: 1;
+}
+
 @media (min-width: 768px) {
-    .titulo-principal {
+    .title {
         font-size: 2rem;
     }
 
@@ -169,5 +188,19 @@ nav{
 
     .nav-links a {
         display: block;
+    }
+
+    footer {
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        gap:1rem;
+    }
+
+    footer * {
+        text-align: left;
+    }
+
+    .business-info {
+        border-right: 1px solid #000;
     }
 }
