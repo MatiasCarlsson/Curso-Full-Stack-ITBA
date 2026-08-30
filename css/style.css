@@ -26,18 +26,24 @@ body{
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    background-color: var(--bg-primary);
+}
+
+.hero-section {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
 }
 
 header{
     position: relative;
     background-color: var(--bg-primary);
-    min-height: 15vh;
 }
 
 main{
     display: flex;
     flex-direction: column;
-    min-height: 85vh;
+    flex:1;
 }
 
 footer{
@@ -139,6 +145,7 @@ nav{
     font-size: 1.5rem;
     letter-spacing: 0.1em;
     font-weight: bold;
+    text-decoration: none;
 }
 
 .logo {
@@ -160,6 +167,24 @@ nav{
     left: 0;
     object-fit: cover;
     z-index: 1;
+}
+
+.email-contact, .instagram-contact {
+    text-decoration: none;
+    color: var(--color-secondary);
+}
+
+.btn {
+    padding: 1rem .5rem;
+}
+
+.product-card {
+    height: 50%;
+    width: 70%;
+    background-color: #000;
+    margin: 1rem auto;
+    border-top-right-radius: 45%;
+    border-top-left-radius: 45%;
 }
 
 @media (min-width: 768px) {
