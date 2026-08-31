@@ -111,6 +111,8 @@ nav{
         transform 0.3s ease-in,
         padding 0.3s ease;
     box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
+
+    z-index: 20;
 }
 
 .nav-links.active {
@@ -158,6 +160,8 @@ nav{
     flex: 1;
     width: 100%;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
 }
 
 .hero-img {
@@ -175,16 +179,26 @@ nav{
 }
 
 .btn {
-    padding: 1rem .5rem;
+    padding: 1rem;
+    text-decoration: none;
+    border:2px solid var(--rosa-polvoriento);
+    border-radius: 25px;
+    display: inline;
+    align-self: center;
+    color: var(--color-primary);
 }
 
 .product-card {
-    height: 50%;
-    width: 70%;
+    height: 30%;
+    width: 50%;
     background-color: #000;
     margin: 1rem auto;
     border-top-right-radius: 45%;
     border-top-left-radius: 45%;
+}
+
+h1 {
+    font-weight: 400;
 }
 
 @media (min-width: 768px) {
