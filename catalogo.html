@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo | Hermanos Jota</title>
+    <meta name="description"
+        content="Catálogo de muebles Hermanos Jota: piezas de madera certificada, diseño atemporal y acabados naturales.">
+
+    <link rel="icon" href="assets/icons/logo-hermanos-jota.jpg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&family=Playfair+Display:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+
+    <header>
+        <nav>
+            <div class="brand-container">
+                <a href="index.html">
+                    <img class="logo" src="assets/icons/logo.svg" alt="Hermanos Jota">
+                </a>
+                <a class="title" href="index.html">HERMANOS JOTA</a>
+            </div>
+
+            <ul class="nav-links" id="nav-links">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="productos.html" aria-current="page">Catálogo</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <a class="cart-link" href="#" aria-label="Ver carrito">
+                    <span class="cart-text">Carrito</span>
+                    <span class="cart-count" id="cart-count">0</span>
+                </a>
+                <button class="menu-btn" id="menu-btn" type="button" aria-label="Abrir menú" aria-expanded="false"
+                    aria-controls="nav-links">&#9776;</button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+
+        <section class="catalog-intro">
+            <h1>Catálogo</h1>
+            <p>
+                Cada pieza cuenta la historia de manos expertas y materiales nobles. Maderas nativas certificadas,
+                acabados de aceite de lino y cera de abejas, y una garantía de diez años sobre la estructura.
+            </p>
+        </section>
+
+        <section class="catalog-toolbar" aria-label="Buscar productos">
+            <form class="search-form" id="search-form" role="search" onsubmit="return false">
+                <label class="search-label" for="search-input">Buscar en el catálogo</label>
+                <input class="search-input" id="search-input" type="search" name="q"
+                    placeholder="Mesa, butaca, biblioteca..." autocomplete="off" disabled>
+            </form>
+            <p class="catalog-count" id="catalog-count"></p>
+        </section>
+
+        <section class="product-grid" id="product-grid" aria-label="Productos"></section>
+
+        <p class="catalog-status" id="catalog-status" role="status">Cargando el catálogo...</p>
+
+    </main>
+
+    <footer>
+        <div class="business-info">
+            <h2>Hermanos Jota</h2>
+            <p>Casa Taller</p>
+            <p>Av. San Juan 2847, San Cristóbal</p>
+            <p>Ciudad Autónoma de Buenos Aires</p>
+            <p>Lunes a viernes de 10:00 a 19:00</p>
+            <p>Sábados de 10:00 a 14:00</p>
+        </div>
+        <div class="contact-info">
+            <h2>Contacto</h2>
+            <p><a class="email-contact" href="mailto:ventas@hermanosjota.com.ar">ventas@hermanosjota.com.ar</a></p>
+            <p><a class="instagram-contact" href="https://instagram.com/hermanosjota_ba">@hermanosjota_ba</a></p>
+            <p>+54 11 4567-8900</p>
+            <p>&copy; 2026 Hermanos Jota</p>
+        </div>
+    </footer>
+
+    <script src="js/productos.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
