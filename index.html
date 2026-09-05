@@ -1,73 +1,134 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <link rel="stylesheet" href="./css/style.css">
-    <link rel="icon" type="image/x-icon" href="assets/icons/logo.svg">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MUEBLERÍA HERMANOS JOTA</title>
+    <title>Mueblería Hermanos Jota | Diseño & Artesanía</title>
+    
+    <link rel="icon" type="image/x-icon" href="assets/icons/logo.svg">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
-    <div class="hero-section">
-        <header>
-            <nav>
-                <div class="brand-container">
-                    <img src="./assets/icons/logo.svg" alt="Logo Mueblería Hermanos Jota" class="logo">
-                    <a href="#"  class="title">MUEBLERÍA<br>HERMANOS JOTA</a>
-                </div>
-    
-                <button class="menu-btn" id="menuBtn">☰</button>
-    
-                <ul class="nav-links" id="navLinks">
-                    <li><a href="#">INICIO</a></li>
-                    <li><a href="#CONTACTO">CONTACTO</a></li>
-                    <li><a href="#PRODUCTOS">PRODUCTOS</a></li>
-                </ul>
 
-            </nav>
-        </header>
-        <main>
-            <div class="hero">
-                <div class="product-card"></div>
-                <h1 class="title">Piezas pensadas para acompañar tus espacios, con materiales nobles, oficio y una mirada contemporánea.</h1>
-                <a href="pages/productos.html" class="btn">Ver la colección</a>
-            </div>
-        </main>
-    </div>
-    <footer>
-        <section class="business-info">
-            <div class="location">
-                <h4>Hermanos Jota - Casa Taller</h4>
-                <p>Av. San Juan 2847<br>C1232AAB - Barrio de San Cristóbal<br>Ciudad Autónoma de Buenos Aires<br>Argentina</p>
-            </div>
-            <div class="hours">
-                <h4>Horarios</h4>
-                <p>Lunes a Viernes: 10:00 - 19:00<br>Sábados: 10:00 - 14:00</p>
-            </div>
-        </section>
-        <section class="contact">
-            <div class="website">
-                <h4>Sitio Web</h4>
-                <p>www.hermanosjota.com.ar</p>
-            </div>
-            <div class="email">
-                <h4>Email</h4>
-                <a class="email-contact" href="mailto:info@hermanosjota.com.ar">info@hermanosjota.com.ar</a>    
-            </div>
-            <div class="ventas">
-                <h4>Ventas</h4>
-                <p>ventas@hermanosjota.com.ar</p>                
-            </div>
-            <div class="instagram">
-                <h4>Instagram</h4>
-                <a class="instagram-contact" href="https://instagram.com/hermanosjota_ba">@hermanosjota_ba</a>               
-            </div>
-            <div class="whatsapp">
-                <h4>WhatsApp</h4>
-                <p>+54 11 4567-8900</p>                
+    <header class="header">
+        <nav class="nav-container">
+            <a href="#" class="brand-container">
+                <img src="./assets/icons/logo.svg" alt="Logo Mueblería Hermanos Jota" class="logo">
+                <span class="brand-title">MUEBLERÍA<br>HERMANOS JOTA</span>
+            </a>
+
+            <button class="menu-btn" id="menuBtn" aria-label="Navegación" aria-expanded="false">
+                <span class="menu-icon"></span>
+            </button>
+
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#">INICIO</a></li>
+                <li><a href="#PRODUCTOS">PRODUCTOS</a></li>
+                <li><a href="#CONTACTO">CONTACTO</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero-section">
+            <div class="hero-container">
+                <div class="hero-text">
+                    <span class="hero-badge">Colección 2026</span>
+                    <h1 class="hero-title">Diseño que abraza el paso del tiempo</h1>
+                    <p class="hero-subtitle">Elaborado con maestría, madera seleccionada y elegancia contemporánea.</p>
+                    <div class="hero-actions">
+                        <a href="#PRODUCTOS" class="btn btn-primary">Ver la colección</a>
+                        <a href="#CONTACTO" class="btn btn-outline">Visitar Taller</a>
+                    </div>
+                </div>
+
+                <div class="hero-visual">
+                    <div class="arch-card">
+                        <img class="hero-img" src="assets/images/Sillón Copacabana.png" alt="Sillón Copacabana en madera de autor">
+                    </div>
+                </div>
             </div>
         </section>
+
+        <section class="products-section" id="PRODUCTOS">
+            <div class="section-header">
+                <h2 class="section-title">Destacados</h2>
+                <p class="section-subtitle">Una selección de nuestras piezas artesanales</p>
+            </div>
+
+            <div class="products-grid" id="featuredProducts"></div>
+
+            <div class="see-more-container">
+                <a href="pages/productos.html" class="btn btn-outline">Ver catálogo completo</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer" id="CONTACTO">
+        <div class="footer-container">
+            <div class="footer-col footer-info">
+                <div class="footer-brand">
+                    <img src="./assets/icons/logo.svg" alt="Logo Hermanos Jota" class="footer-logo">
+                    <h4>Hermanos Jota — Casa Taller</h4>
+                </div>
+                <p class="address">
+                    Av. San Juan 2847<br>
+                    C1232AAB — San Cristóbal<br>
+                    Ciudad Autónoma de Buenos Aires, Argentina
+                </p>
+                <div class="hours">
+                    <p><strong>Horarios de atención:</strong></p>
+                    <p>Lun a Vie: 10:00 - 19:00 hs</p>
+                    <p>Sábados: 10:00 - 14:00 hs</p>
+                </div>
+            </div>
+
+            <div class="footer-col footer-links-col">
+                <h4>Navegación</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Inicio</a></li>
+                    <li><a href="#PRODUCTOS">Colección Destacada</a></li>
+                    <li><a href="#CONTACTO">Contacto & Ubicación</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col footer-contact">
+                <h4>Contacto Directo</h4>
+                <ul class="contact-list">
+                    <li>
+                        <span>Sitio Web</span>
+                        <a href="https://www.hermanosjota.com.ar" target="_blank" rel="noopener">www.hermanosjota.com.ar</a>
+                    </li>
+                    <li>
+                        <span>Email General</span>
+                        <a href="mailto:info@hermanosjota.com.ar">info@hermanosjota.com.ar</a>
+                    </li>
+                    <li>
+                        <span>Ventas</span>
+                        <a href="mailto:ventas@hermanosjota.com.ar">ventas@hermanosjota.com.ar</a>
+                    </li>
+                    <li>
+                        <span>Instagram</span>
+                        <a href="https://instagram.com/hermanosjota_ba" target="_blank" rel="noopener">@hermanosjota_ba</a>
+                    </li>
+                    <li>
+                        <span>WhatsApp</span>
+                        <a href="https://wa.me/541145678900" target="_blank" rel="noopener">+54 11 4567-8900</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 Mueblería Hermanos Jota. Todos los derechos reservados.</p>
+        </div>
     </footer>
+
     <script src="js/script.js"></script>
 </body>
 </html>
