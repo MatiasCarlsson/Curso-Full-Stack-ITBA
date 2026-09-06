@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Catálogo completo de muebles Hermanos Jota: maderas macizas nobles, ensambles artesanales y acabados naturales para cada ambiente de tu casa.">
+  <link rel="icon" type="image/svg+xml" href="../assets/icons/logo.svg">
+  <title>Mueblería Hermanos Jota | Catálogo de Productos</title>
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+  <a class="enlace-saltar" href="#contenido-principal">Saltar al contenido</a>
+
+  <!-- Header con logo, navegación y carrito con contador -->
+  <header class="encabezado-sitio">
+    <div class="contenedor encabezado-contenido">
+      <a class="marca" href="../index.html" aria-label="Hermanos Jota - Inicio">
+        <img class="marca-logo" src="../assets/icons/logo.svg" alt="Logo Hermanos Jota" width="48" height="48">
+        <span class="marca-texto">
+          <span class="marca-nombre">Hermanos Jota</span>
+          <span class="marca-subtitulo">Muebles con historia</span>
+        </span>
+      </a>
+
+      <nav class="navegacion-principal" aria-label="Navegación principal">
+        <ul class="lista-navegacion">
+          <li><a class="enlace-navegacion" href="../index.html">Inicio</a></li>
+          <li><a class="enlace-navegacion" href="productos.html" aria-current="page">Productos</a></li>
+          <li><a class="enlace-navegacion" href="contacto.html">Contacto</a></li>
+        </ul>
+      </nav>
+
+      <div class="acciones-encabezado">
+        <a class="indicador-carrito" href="productos.html" aria-label="Carrito con 0 productos">
+          <span>Carrito</span>
+          <span class="contador-carrito" data-cart-count>0</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main id="contenido-principal">
+    <!-- Portada de sección -->
+    <section class="portada-contacto" style="background: #fbf7f0;">
+      <div class="contenedor">
+        <p class="volanta">Colección Permanente</p>
+        <h1>Catálogo de Productos</h1>
+        <p class="bajada">
+          Cada pieza cuenta la historia de manos expertas y materiales nobles. Maderas estacionadas, uniones tradicionales y una garantía estructural de hasta 10 años.
+        </p>
+      </div>
+    </section>
+
+    <!-- Toolbar de Catálogo con Buscador (Bonus Funcional) -->
+    <section class="seccion" style="padding-top: 36px;">
+      <div class="contenedor">
+        <div class="toolbar-catalogo">
+          <div class="buscador-contenedor">
+            <label for="buscar-producto" class="solo-lectores">Buscar piezas en el catálogo</label>
+            <input
+              type="search"
+              id="buscar-producto"
+              class="buscador-input"
+              placeholder="Buscar por nombre, madera o categoría (ej: mesa, roble, living)..."
+              autocomplete="off"
+            >
+          </div>
+          <p id="contador-catalogo" class="contador-catalogo" aria-live="polite">Cargando catálogo...</p>
+        </div>
+
+        <!-- Estado de carga y mensajes -->
+        <p id="estado-catalogo" class="estado-catalogo" role="status">Cargando piezas desde el taller...</p>
+
+        <!-- Grilla de Tarjetas de Productos -->
+        <div id="grilla-catalogo" class="grilla-productos" aria-label="Grilla de productos"></div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer con información básica -->
+  <footer class="pie-sitio">
+    <div class="contenedor pie-contenido">
+      <div class="pie-marca">
+        <span class="pie-titulo">Hermanos Jota</span>
+        <p>Casa Taller · Muebles artesanales, maderas nativas y diseño atemporal.</p>
+        <p style="font-size: 0.9rem; margin-top: 6px;">Av. San Juan 2847, San Cristóbal, CABA · Lunes a Viernes 10 a 19 hs, Sábados 10 a 14 hs.</p>
+      </div>
+      <ul class="enlaces-pie" aria-label="Enlaces del sitio">
+        <li><a href="../index.html">Inicio</a></li>
+        <li><a href="productos.html">Productos</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="../js/productos.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", async () => {
+      const grilla = document.getElementById("grilla-catalogo");
+      const estado = document.getElementById("estado-catalogo");
+      const contador = document.getElementById("contador-catalogo");
+      const buscador = document.getElementById("buscar-producto");
+
+      let listaProductos = [];
+
+      // Función para renderizar la lista en el DOM
+      function renderizar(items) {
+        grilla.innerHTML = "";
+
+        if (items.length === 0) {
+          estado.hidden = false;
+          estado.textContent = "No encontramos piezas que coincidan con tu búsqueda. Probá con otra palabra.";
+          contador.textContent = "0 piezas encontradas";
+          return;
+        }
+
+        estado.hidden = true;
+        contador.textContent = items.length === 1 ? "1 pieza disponible" : `${items.length} piezas disponibles`;
+
+        const fragmento = document.createDocumentFragment();
+
+        items.forEach((item) => {
+          const card = document.createElement("article");
+          card.className = "tarjeta-producto";
+          // Ajusta la ruta relativa de la imagen desde /pages/
+          const rutaImg = normalizarRutaImagen(item.imagen, true);
+
+          card.innerHTML = `
+            <a class="tarjeta-enlace" href="producto.html?id=${encodeURIComponent(item.id)}" aria-label="Ver detalles de ${item.nombre}">
+              <img src="${rutaImg}" alt="${item.alt}" loading="lazy" width="600" height="450">
+              <div class="cuerpo-tarjeta-producto">
+                <span class="categoria-tag">${item.categoria}</span>
+                <h3>${item.nombre}</h3>
+                <p class="datos-producto">${item.descripcion}</p>
+                <p class="precio">${formatearPrecio(item.precio)}</p>
+              </div>
+            </a>
+            <div class="acciones-tarjeta">
+              <button type="button" class="boton boton-principal btn-agregar" data-id="${item.id}">
+                Añadir al Carrito
+              </button>
+            </div>
+          `;
+          fragmento.appendChild(card);
+        });
+
+        grilla.appendChild(fragmento);
+      }
+
+      // Filtrado para el buscador (bonus funcional)
+      function filtrar() {
+        const query = buscador.value.trim().toLowerCase();
+        if (!query) {
+          renderizar(listaProductos);
+          return;
+        }
+        const filtrados = listaProductos.filter((p) => {
+          const texto = `${p.nombre} ${p.categoria} ${p.descripcion} ${p.detallesFabricacion.materiales}`.toLowerCase();
+          return texto.includes(query);
+        });
+        renderizar(filtrados);
+      }
+
+      buscador.addEventListener("input", filtrar);
+
+      // Delegación de eventos para botón "Añadir al Carrito"
+      grilla.addEventListener("click", (e) => {
+        const btn = e.target.closest(".btn-agregar");
+        if (!btn) return;
+        const productoId = btn.getAttribute("data-id");
+        const prod = listaProductos.find((p) => p.id === productoId);
+        agregarAlCarrito(productoId, 1);
+        mostrarNotificacionCarrito(`"${prod ? prod.nombre : "Pieza"}" agregada al carrito`);
+      });
+
+      try {
+        // Carga asíncrona simulada con setTimeout y Promise
+        listaProductos = await obtenerProductos(500);
+        renderizar(listaProductos);
+      } catch (err) {
+        console.error("Error al cargar productos:", err);
+        estado.textContent = "Ocurrió un error al cargar el catálogo. Por favor intente más tarde.";
+      }
+    });
+  </script>
+</body>
+</html>

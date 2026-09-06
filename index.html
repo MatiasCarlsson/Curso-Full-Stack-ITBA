@@ -1,73 +1,154 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <link rel="stylesheet" href="./css/style.css">
-    <link rel="icon" type="image/x-icon" href="assets/icons/logo.svg">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MUEBLERÍA HERMANOS JOTA</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Mueblería Hermanos Jota: muebles de diseño contemporáneo en maderas macizas nobles, fabricados artesanalmente en Buenos Aires.">
+  <link rel="icon" type="image/svg+xml" href="assets/icons/logo.svg">
+  <title>Mueblería Hermanos Jota | Inicio</title>
+  <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <div class="hero-section">
-        <header>
-            <nav>
-                <div class="brand-container">
-                    <img src="./assets/icons/logo.svg" alt="Logo Mueblería Hermanos Jota" class="logo">
-                    <a href="#"  class="title">MUEBLERÍA<br>HERMANOS JOTA</a>
-                </div>
-    
-                <button class="menu-btn" id="menuBtn">☰</button>
-    
-                <ul class="nav-links" id="navLinks">
-                    <li><a href="#">INICIO</a></li>
-                    <li><a href="#CONTACTO">CONTACTO</a></li>
-                    <li><a href="#PRODUCTOS">PRODUCTOS</a></li>
-                </ul>
+  <a class="enlace-saltar" href="#contenido-principal">Saltar al contenido</a>
 
-            </nav>
-        </header>
-        <main>
-            <div class="hero">
-                <div class="product-card"></div>
-                <h1 class="title">Piezas pensadas para acompañar tus espacios, con materiales nobles, oficio y una mirada contemporánea.</h1>
-                <a href="pages/productos.html" class="btn">Ver la colección</a>
-            </div>
-        </main>
+  <!-- Header con logo, navegación y carrito con contador -->
+  <header class="encabezado-sitio">
+    <div class="contenedor encabezado-contenido">
+      <a class="marca" href="index.html" aria-label="Hermanos Jota - Inicio">
+        <img class="marca-logo" src="assets/icons/logo.svg" alt="Logo Hermanos Jota" width="48" height="48">
+        <span class="marca-texto">
+          <span class="marca-nombre">Hermanos Jota</span>
+          <span class="marca-subtitulo">Muebles con historia</span>
+        </span>
+      </a>
+
+      <nav class="navegacion-principal" aria-label="Navegación principal">
+        <ul class="lista-navegacion">
+          <li><a class="enlace-navegacion" href="index.html" aria-current="page">Inicio</a></li>
+          <li><a class="enlace-navegacion" href="pages/productos.html">Productos</a></li>
+          <li><a class="enlace-navegacion" href="pages/contacto.html">Contacto</a></li>
+        </ul>
+      </nav>
+
+      <div class="acciones-encabezado">
+        <a class="indicador-carrito" href="pages/productos.html" aria-label="Carrito con 0 productos">
+          <span>Carrito</span>
+          <span class="contador-carrito" data-cart-count>0</span>
+        </a>
+      </div>
     </div>
-    <footer>
-        <section class="business-info">
-            <div class="location">
-                <h4>Hermanos Jota - Casa Taller</h4>
-                <p>Av. San Juan 2847<br>C1232AAB - Barrio de San Cristóbal<br>Ciudad Autónoma de Buenos Aires<br>Argentina</p>
+  </header>
+
+  <main id="contenido-principal">
+    <!-- Hero Banner principal -->
+    <section class="portada">
+      <div class="contenedor">
+        <p class="volanta" style="color: var(--color-oro);">Taller artesanal de diseño</p>
+        <h1>Piezas pensadas para acompañar tus espacios</h1>
+        <p class="bajada">
+          Materiales nobles, oficio tradicional y una mirada contemporánea. Muebles concebidos para durar generaciones.
+        </p>
+        <div class="acciones-portada" style="margin-top: 24px;">
+          <a href="pages/productos.html" class="boton boton-principal">Ver la colección</a>
+          <a href="pages/contacto.html" class="boton boton-secundario">Visitar nuestro taller</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3-4 Productos destacados cargados dinámicamente -->
+    <section class="seccion seccion-destacados" aria-labelledby="titulo-destacados">
+      <div class="contenedor">
+        <div class="encabezado-seccion">
+          <p class="volanta">Selección de taller</p>
+          <h2 id="titulo-destacados">Productos Destacados</h2>
+          <p class="bajada">
+            Una muestra de nuestras piezas más emblemáticas, trabajadas con encastres a mano y acabados naturales.
+          </p>
+        </div>
+
+        <p id="destacados-status" class="estado-catalogo" role="status">Cargando piezas destacadas...</p>
+
+        <div id="contenedor-destacados" class="grilla-productos" aria-live="polite"></div>
+
+        <div style="text-align: center; margin-top: 40px;">
+          <a href="pages/productos.html" class="boton boton-secundario">Ver catálogo completo (11 piezas) &rarr;</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer con información básica -->
+  <footer class="pie-sitio">
+    <div class="contenedor pie-contenido">
+      <div class="pie-marca">
+        <span class="pie-titulo">Hermanos Jota</span>
+        <p>Casa Taller · Muebles artesanales, maderas nativas y diseño atemporal.</p>
+        <p style="font-size: 0.9rem; margin-top: 6px;">Av. San Juan 2847, San Cristóbal, CABA · Lunes a Viernes 10 a 19 hs, Sábados 10 a 14 hs.</p>
+      </div>
+      <ul class="enlaces-pie" aria-label="Enlaces del sitio">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="pages/productos.html">Productos</a></li>
+        <li><a href="pages/contacto.html">Contacto</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/productos.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", async () => {
+      const contenedor = document.getElementById("contenedor-destacados");
+      const statusEl = document.getElementById("destacados-status");
+
+      try {
+        // Carga asíncrona simulada vía setTimeout / async-await
+        const catalogo = await obtenerProductos(400);
+
+        // Filtrar 3 o 4 productos destacados
+        const destacados = catalogo.filter((p) => p.destacado).slice(0, 4);
+
+        if (statusEl) statusEl.hidden = true;
+        contenedor.innerHTML = "";
+
+        destacados.forEach((item) => {
+          const card = document.createElement("article");
+          card.className = "tarjeta-producto";
+          card.innerHTML = `
+            <a class="tarjeta-enlace" href="pages/producto.html?id=${item.id}" aria-label="Ver detalles de ${item.nombre}">
+              <img src="${item.imagen}" alt="${item.alt}" loading="lazy" width="600" height="450">
+              <div class="cuerpo-tarjeta-producto">
+                <span class="categoria-tag">${item.categoria}</span>
+                <h3>${item.nombre}</h3>
+                <p class="datos-producto">${item.descripcion}</p>
+                <p class="precio">${formatearPrecio(item.precio)}</p>
+              </div>
+            </a>
+            <div class="acciones-tarjeta">
+              <button type="button" class="boton boton-principal btn-agregar" data-id="${item.id}">
+                Añadir al Carrito
+              </button>
             </div>
-            <div class="hours">
-                <h4>Horarios</h4>
-                <p>Lunes a Viernes: 10:00 - 19:00<br>Sábados: 10:00 - 14:00</p>
-            </div>
-        </section>
-        <section class="contact">
-            <div class="website">
-                <h4>Sitio Web</h4>
-                <p>www.hermanosjota.com.ar</p>
-            </div>
-            <div class="email">
-                <h4>Email</h4>
-                <a class="email-contact" href="mailto:info@hermanosjota.com.ar">info@hermanosjota.com.ar</a>    
-            </div>
-            <div class="ventas">
-                <h4>Ventas</h4>
-                <p>ventas@hermanosjota.com.ar</p>                
-            </div>
-            <div class="instagram">
-                <h4>Instagram</h4>
-                <a class="instagram-contact" href="https://instagram.com/hermanosjota_ba">@hermanosjota_ba</a>               
-            </div>
-            <div class="whatsapp">
-                <h4>WhatsApp</h4>
-                <p>+54 11 4567-8900</p>                
-            </div>
-        </section>
-    </footer>
-    <script src="js/script.js"></script>
+          `;
+          contenedor.appendChild(card);
+        });
+
+        // Event listener para añadir al carrito
+        contenedor.addEventListener("click", (e) => {
+          const btn = e.target.closest(".btn-agregar");
+          if (!btn) return;
+          const productoId = btn.getAttribute("data-id");
+          const prod = catalogo.find((p) => p.id === productoId);
+          agregarAlCarrito(productoId, 1);
+          mostrarNotificacionCarrito(`"${prod ? prod.nombre : "Producto"}" añadido al carrito`);
+        });
+
+      } catch (err) {
+        console.error(err);
+        if (statusEl) {
+          statusEl.textContent = "No pudimos cargar los productos destacados. Intente nuevamente.";
+        }
+      }
+    });
+  </script>
 </body>
 </html>
