@@ -6,14 +6,14 @@ Sitio web desarrollado con HTML, CSS y JavaScript para una mueblería artesanal.
 
 ---
 
-## Integrantes del grupo
+## Integrantes y tareas del grupo
 
-| Rol | Nombre y apellido | Correo electrónico | Usuario GitHub |
-| :--- | :--- | :--- | :--- |
-| **Referente** | Matías Viana Carlsson | matiascarlsson1@gmail.com | [@matiascarlsson](https://github.com/matiascarlsson) |
-| **Integrante** | Lautaro Joaquín Quevedo | quevedojoaquin@outlook.com | [@LautaroJQ](https://github.com/LautaroJQ) |
-| **Integrante** | Tiago Moyano | tiagomoyano15@gmail.com | [@TiagoMoyano](https://github.com/TiagoMoyano) |
-| **Integrante** | Dante Lamorte | dantelamorte@outlook.com | [@DanteLamorte](https://github.com/DanteLamorte) |
+| Rol | Nombre y apellido | Correo electrónico | Usuario GitHub | Tareas realizadas |
+| :--- | :--- | :--- | :--- | :--- |
+| **Referente** | Matías Viana Carlsson | matiascarlsson1@gmail.com | [@matiascarlsson](https://github.com/matiascarlsson) | Coordinación del equipo, vista de detalle de producto (`pages/producto.html`), persistencia del carrito con `localStorage` e integración final de código. |
+| **Integrante** | Lautaro Joaquín Quevedo | quevedojoaquin@outlook.com | [@LautaroJQ](https://github.com/LautaroJQ) | Maquetado y validación del formulario de Contacto (`pages/contacto.html`, `js/contacto.js`), sección de destacados y estilos visuales. |
+| **Integrante** | Tiago Moyano | tiagomoyano15@gmail.com | [@TiagoMoyano](https://github.com/TiagoMoyano) | Maquetado inicial de la portada (`index.html`), componentes de cabecera y lógica del menú de navegación responsive. |
+| **Integrante** | Dante Lamorte | dantelamorte@outlook.com | [@DanteLamorte](https://github.com/DanteLamorte) | Catálogo de productos (`pages/productos.html`), array de datos (`js/productos.js`), carga asíncrona simulada y buscador de piezas. |
 
 ---
 
