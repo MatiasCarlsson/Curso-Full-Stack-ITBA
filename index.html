@@ -10,8 +10,6 @@
 </head>
 <body>
   <a class="enlace-saltar" href="#contenido-principal">Saltar al contenido</a>
-
-  <!-- Header con logo, navegación y carrito con contador -->
   <header class="encabezado-sitio">
     <div class="contenedor encabezado-contenido">
       <a class="marca" href="index.html" aria-label="Hermanos Jota - Inicio">
@@ -40,7 +38,6 @@
   </header>
 
   <main id="contenido-principal">
-    <!-- Hero Banner principal -->
     <section class="portada">
       <div class="contenedor">
         <p class="volanta" style="color: var(--color-oro);">Taller artesanal de diseño</p>
@@ -54,8 +51,6 @@
         </div>
       </div>
     </section>
-
-    <!-- 3-4 Productos destacados cargados dinámicamente -->
     <section class="seccion seccion-destacados" aria-labelledby="titulo-destacados">
       <div class="contenedor">
         <div class="encabezado-seccion">
@@ -76,8 +71,6 @@
       </div>
     </section>
   </main>
-
-  <!-- Footer con información básica -->
   <footer class="pie-sitio">
     <div class="contenedor pie-contenido">
       <div class="pie-marca">
@@ -92,8 +85,6 @@
       </ul>
     </div>
   </footer>
-
-  <!-- Scripts -->
   <script src="js/productos.js"></script>
   <script>
     document.addEventListener("DOMContentLoaded", async () => {
@@ -101,10 +92,7 @@
       const statusEl = document.getElementById("destacados-status");
 
       try {
-        // Carga asíncrona simulada vía setTimeout / async-await
         const catalogo = await obtenerProductos(400);
-
-        // Filtrar 3 o 4 productos destacados
         const destacados = catalogo.filter((p) => p.destacado).slice(0, 4);
 
         if (statusEl) statusEl.hidden = true;
@@ -131,8 +119,6 @@
           `;
           contenedor.appendChild(card);
         });
-
-        // Event listener para añadir al carrito
         contenedor.addEventListener("click", (e) => {
           const btn = e.target.closest(".btn-agregar");
           if (!btn) return;

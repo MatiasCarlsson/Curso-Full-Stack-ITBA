@@ -1,18 +1,6 @@
-/* ==========================================================================
-   MUEBLERÍA HERMANOS JOTA - HOJA DE ESTILOS UNIFICADA
-   Sprint 1 y 2 - ITBA Full Stack Developer
-   ========================================================================== */
-
-/* --------------------------------------------------------------------------
-   1. IMPORTACIÓN DE TIPOGRAFÍAS
-   -------------------------------------------------------------------------- */
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap");
 
-/* --------------------------------------------------------------------------
-   2. VARIABLES CSS Y SISTEMA DE DISEÑO (DESIGN TOKENS)
-   -------------------------------------------------------------------------- */
 :root {
-  /* Paleta cromática oficial */
   --color-siena: #a0522d;
   --color-siena-oscuro: #834225;
   --color-salvia: #87a96b;
@@ -27,7 +15,6 @@
   --color-error: #b42318;
   --color-exito: #2f6b3f;
 
-  /* Nombres alternativos / retrocompatibilidad */
   --siena-tostado: var(--color-siena);
   --verde-salvia: var(--color-salvia);
   --alabastro-calido: var(--color-alabastro);
@@ -39,13 +26,11 @@
   --color-accent: var(--color-oro);
   --color-accent-soft: var(--color-rosa);
 
-  /* Tipografías */
   --fuente-base: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --fuente-titulo: "Playfair Display", Georgia, "Times New Roman", serif;
   --font-primary: var(--fuente-base);
   --font-secondary: var(--fuente-titulo);
 
-  /* Escalas tipográficas y espaciados */
   --tamaño-titulo: 2.5rem;
   --tamaño-cuerpo: 1rem;
   --tamaño-leyenda: 0.9rem;
@@ -60,16 +45,12 @@
   --espaciado-titulo: 0.05em;
   --espaciado-boton: 0.04em;
 
-  /* Layout y Dimensiones */
   --contenedor: 1160px;
   --radio: 8px;
   --sombra-suave: 0 16px 40px rgba(43, 33, 28, 0.08);
   --sombra-elevada: 0 20px 48px rgba(43, 33, 28, 0.14);
 }
 
-/* --------------------------------------------------------------------------
-   3. RESET Y NORMALIZACIÓN GLOBAL
-   -------------------------------------------------------------------------- */
 *,
 *::before,
 *::after {
@@ -132,7 +113,6 @@ button {
   outline-offset: 3px;
 }
 
-/* Accesibilidad: salto de contenido para lectores de pantalla */
 .enlace-saltar {
   position: absolute;
   left: 16px;
@@ -162,9 +142,6 @@ button {
   border: 0;
 }
 
-/* --------------------------------------------------------------------------
-   4. LAYOUTS Y CONTENEDORES
-   -------------------------------------------------------------------------- */
 .contenedor {
   width: min(100% - 32px, var(--contenedor));
   margin-inline: auto;
@@ -224,9 +201,6 @@ h4 {
   font-size: 1.1rem;
 }
 
-/* --------------------------------------------------------------------------
-   5. BOTONES Y ACCIONES
-   -------------------------------------------------------------------------- */
 .boton,
 .btn {
   display: inline-flex;
@@ -286,9 +260,6 @@ h4 {
   background-color: rgba(43, 33, 28, 0.05);
 }
 
-/* --------------------------------------------------------------------------
-   6. HEADER Y NAVEGACIÓN PRINCIPAL
-   -------------------------------------------------------------------------- */
 .encabezado-sitio {
   position: sticky;
   top: 0;
@@ -420,9 +391,6 @@ h4 {
   font-weight: 700;
 }
 
-/* --------------------------------------------------------------------------
-   7. HERO BANNER PRINCIPAL (index.html)
-   -------------------------------------------------------------------------- */
 .portada {
   display: flex;
   min-height: 520px;
@@ -450,9 +418,6 @@ h4 {
   gap: 14px;
 }
 
-/* --------------------------------------------------------------------------
-   8. CATÁLOGO Y BUSCADOR (productos.html)
-   -------------------------------------------------------------------------- */
 .portada-contacto {
   padding-block: 48px 28px;
   background-color: #fbf7f0;
@@ -508,7 +473,6 @@ h4 {
   margin-block: 20px;
 }
 
-/* Grilla y Tarjetas de Producto */
 .grilla-productos {
   display: grid;
   gap: 24px;
@@ -596,9 +560,6 @@ h4 {
   width: 100%;
 }
 
-/* --------------------------------------------------------------------------
-   9. DETALLE DE PRODUCTO (producto.html)
-   -------------------------------------------------------------------------- */
 .portada-detalle {
   padding-block: 22px;
   border-bottom: 1px solid var(--color-linea);
@@ -703,9 +664,6 @@ h4 {
   gap: 12px;
 }
 
-/* --------------------------------------------------------------------------
-   10. PÁGINA DE CONTACTO Y FORMULARIO (contacto.html)
-   -------------------------------------------------------------------------- */
 .distribucion-contacto {
   display: grid;
   gap: 28px;
@@ -846,9 +804,6 @@ h4 {
   display: none;
 }
 
-/* --------------------------------------------------------------------------
-   11. NOTIFICACIÓN TOAST (FEEDBACK DEL CARRITO)
-   -------------------------------------------------------------------------- */
 .notificacion-toast {
   position: fixed;
   bottom: 24px;
@@ -877,17 +832,11 @@ h4 {
   pointer-events: auto;
 }
 
-/* --------------------------------------------------------------------------
-   12. SECCIÓN DESTACADOS (index.html)
-   -------------------------------------------------------------------------- */
 .seccion-destacados {
   background-color: #fffdf9;
   border-top: 1px solid rgba(160, 82, 45, 0.1);
 }
 
-/* --------------------------------------------------------------------------
-   13. FOOTER GLOBAL
-   -------------------------------------------------------------------------- */
 .pie-sitio {
   margin-top: 64px;
   color: var(--color-blanco);
@@ -932,9 +881,6 @@ h4 {
   color: var(--color-alabastro);
 }
 
-/* --------------------------------------------------------------------------
-   14. CLASES DE COMPATIBILIDAD / LEGACY
-   -------------------------------------------------------------------------- */
 .hero-section {
   display: flex;
   flex-direction: column;
@@ -964,9 +910,6 @@ h4 {
   font-family: var(--fuente-titulo);
 }
 
-/* --------------------------------------------------------------------------
-   15. MEDIA QUERIES RESPONSIVAS (MOBILE-FIRST)
-   -------------------------------------------------------------------------- */
 @media (max-width: 520px) {
   .marca-subtitulo,
   .indicador-carrito span:first-child {

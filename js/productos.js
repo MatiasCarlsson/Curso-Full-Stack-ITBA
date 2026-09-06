@@ -1,8 +1,3 @@
-/**
- * Catálogo de productos de Mueblería Hermanos Jota
- * Fuente única de datos para el sitio web.
- */
-
 const productos = [
   {
     id: "aparador-uspallata",
@@ -182,12 +177,6 @@ const productos = [
   }
 ];
 
-/**
- * Simula una petición asíncrona a un backend para obtener los productos.
- * Utiliza setTimeout y devuelve una Promise para cumplir con la consigna técnica.
- * @param {number} delayMs Tiempo de demora simulado en milisegundos (default 500ms)
- * @returns {Promise<Array>} Promesa que resuelve al array de productos
- */
 function obtenerProductos(delayMs = 500) {
   return new Promise((resolve) => {
     window.setTimeout(() => {
@@ -196,21 +185,10 @@ function obtenerProductos(delayMs = 500) {
   });
 }
 
-/**
- * Formatea un número como moneda argentina (ARS).
- * @param {number} valor 
- * @returns {string} Ejemplo: "$840.000"
- */
 function formatearPrecio(valor) {
   return `$${valor.toLocaleString("es-AR")}`;
 }
 
-/**
- * Normaliza una ruta relativa de imagen según si la página está en raíz o dentro de /pages/
- * @param {string} rutaOriginal 
- * @param {boolean} desdeSubcarpeta 
- * @returns {string}
- */
 function normalizarRutaImagen(rutaOriginal, desdeSubcarpeta = false) {
   if (desdeSubcarpeta) {
     return rutaOriginal.startsWith("assets/") ? `../${rutaOriginal}` : rutaOriginal;
@@ -218,49 +196,29 @@ function normalizarRutaImagen(rutaOriginal, desdeSubcarpeta = false) {
   return rutaOriginal;
 }
 
-/* ========================================================
-   GESTIÓN DEL CARRITO SIMULADO (localStorage)
-   ======================================================== */
-
 const CARRITO_STORAGE_KEY = "hj_carrito_items";
 
-/**
- * Obtiene los items del carrito desde localStorage.
- * @returns {Array<{ id: string, cantidad: number }>}
- */
 function obtenerCarrito() {
   try {
     const raw = localStorage.getItem(CARRITO_STORAGE_KEY);
     return raw ? JSON.parse(raw) : [];
   } catch (e) {
-    console.error("Error al leer el carrito de localStorage:", e);
     return [];
   }
 }
 
-/**
- * Guarda el estado del carrito en localStorage y actualiza contadores.
- * @param {Array<{ id: string, cantidad: number }>} items 
- */
 function guardarCarrito(items) {
   try {
     localStorage.setItem(CARRITO_STORAGE_KEY, JSON.stringify(items));
     const totalCantidad = items.reduce((acc, curr) => acc + (curr.cantidad || 0), 0);
-    // Sincroniza con claves legadas también
     localStorage.setItem("carritoCantidad", String(totalCantidad));
     localStorage.setItem("hj_cart_count", String(totalCantidad));
     actualizarContadoresCarrito();
   } catch (e) {
-    console.error("Error al guardar el carrito:", e);
+    console.error(e);
   }
 }
 
-/**
- * Suma una unidad de un producto al carrito simulado.
- * @param {string} productoId 
- * @param {number} cantidad 
- * @returns {number} Nueva cantidad total de ítems en el carrito
- */
 function agregarAlCarrito(productoId, cantidad = 1) {
   const items = obtenerCarrito();
   const existente = items.find((it) => it.id === productoId);
@@ -275,24 +233,15 @@ function agregarAlCarrito(productoId, cantidad = 1) {
   return items.reduce((acc, curr) => acc + curr.cantidad, 0);
 }
 
-/**
- * Devuelve la cantidad total de artículos en el carrito.
- * @returns {number}
- */
 function obtenerCantidadTotalCarrito() {
   const items = obtenerCarrito();
   if (items.length > 0) {
     return items.reduce((acc, curr) => acc + (curr.cantidad || 0), 0);
   }
-  // Fallback a clave simple si existe
   const legada = localStorage.getItem("carritoCantidad") || localStorage.getItem("hj_cart_count");
   return legada ? Number.parseInt(legada, 10) || 0 : 0;
 }
 
-/**
- * Muestra una notificación emergente visual cuando se añade un producto.
- * @param {string} mensaje 
- */
 function mostrarNotificacionCarrito(mensaje = "Producto agregado al carrito") {
   let toast = document.getElementById("toast-carrito");
   if (!toast) {
@@ -311,9 +260,6 @@ function mostrarNotificacionCarrito(mensaje = "Producto agregado al carrito") {
   }, 2600);
 }
 
-/**
- * Actualiza todos los elementos del DOM que muestran el contador de carrito.
- */
 function actualizarContadoresCarrito() {
   const total = obtenerCantidadTotalCarrito();
   const badges = document.querySelectorAll("[data-cart-count]");
@@ -326,7 +272,6 @@ function actualizarContadoresCarrito() {
   });
 }
 
-// Ejecutar sincronización al cargar el script en cualquier página
 if (typeof document !== "undefined") {
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", actualizarContadoresCarrito);
@@ -334,3 +279,4 @@ if (typeof document !== "undefined") {
     actualizarContadoresCarrito();
   }
 }
+

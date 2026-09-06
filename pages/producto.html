@@ -10,8 +10,6 @@
 </head>
 <body>
   <a class="enlace-saltar" href="#contenido-principal">Saltar al contenido</a>
-
-  <!-- Header con logo, navegación y carrito con contador -->
   <header class="encabezado-sitio">
     <div class="contenedor encabezado-contenido">
       <a class="marca" href="../index.html" aria-label="Hermanos Jota - Inicio">
@@ -40,7 +38,6 @@
   </header>
 
   <main id="contenido-principal">
-    <!-- Barra de navegación / Migas de pan -->
     <div class="portada-detalle">
       <div class="contenedor">
         <nav aria-label="Miga de pan">
@@ -52,8 +49,6 @@
         </nav>
       </div>
     </div>
-
-    <!-- Contenedor dinámico del Detalle -->
     <section class="seccion">
       <div class="contenedor">
         <div id="contenedor-detalle" class="distribucion-detalle">
@@ -62,8 +57,6 @@
       </div>
     </section>
   </main>
-
-  <!-- Footer con información básica -->
   <footer class="pie-sitio">
     <div class="contenedor pie-contenido">
       <div class="pie-marca">
@@ -78,8 +71,6 @@
       </ul>
     </div>
   </footer>
-
-  <!-- Scripts -->
   <script src="../js/productos.js"></script>
   <script>
     document.addEventListener("DOMContentLoaded", async () => {
@@ -87,8 +78,6 @@
       const breadcrumbNombre = document.getElementById("breadcrumb-nombre");
       const tituloPagina = document.getElementById("titulo-pagina");
       const metaDescripcion = document.getElementById("meta-descripcion");
-
-      // Obtener el ID del producto desde el parámetro de la URL (?id=...)
       const params = new URLSearchParams(window.location.search);
       let productoId = params.get("id");
 
@@ -98,8 +87,6 @@
       } catch (e) {
         catalogo = productos;
       }
-
-      // Si no se especificó ID o no existe, usar el primer producto disponible por defecto
       let producto = catalogo.find((p) => p.id === productoId);
       if (!producto && catalogo.length > 0) {
         producto = catalogo[0];
@@ -116,8 +103,6 @@
         `;
         return;
       }
-
-      // Actualizar título de la pestaña y meta descripción
       tituloPagina.textContent = `${producto.nombre} | Hermanos Jota`;
       breadcrumbNombre.textContent = producto.nombre;
       if (metaDescripcion) {
@@ -125,8 +110,6 @@
       }
 
       const rutaImg = normalizarRutaImagen(producto.imagen, true);
-
-      // Renderizar el detalle completo mediante DOM
       contenedor.innerHTML = `
         <div class="galeria-detalle">
           <div class="imagen-detalle-marco">
@@ -145,8 +128,6 @@
             <h3>Descripción</h3>
             <p class="bajada">${producto.descripcion}</p>
           </div>
-
-          <!-- Detalles de Fabricación -->
           <div class="bloque-fabricacion">
             <h3>Detalles de Fabricación y Materiales</h3>
             <dl class="lista-especificaciones">
@@ -168,8 +149,6 @@
               </div>
             </dl>
           </div>
-
-          <!-- Acciones de Compra -->
           <div class="acciones-compra">
             <button id="btn-agregar-detalle" type="button" class="boton boton-principal" data-id="${producto.id}">
               Añadir al Carrito
@@ -178,8 +157,6 @@
           </div>
         </article>
       `;
-
-      // Event listener interactivo en el botón "Añadir al Carrito"
       const btnAgregar = document.getElementById("btn-agregar-detalle");
       if (btnAgregar) {
         btnAgregar.addEventListener("click", () => {
