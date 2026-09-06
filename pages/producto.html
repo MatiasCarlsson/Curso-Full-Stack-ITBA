@@ -1,40 +1,170 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Detalle Producto</title>
-    <link rel="stylesheet" href="/styles/global.css" />
-    <link rel="stylesheet" href="/styles/producto.css" />
-    <link rel="stylesheet" href="/styles/globalTipografias.css" />
-    <link rel="stylesheet" href="/styles/responsiveProducto.css" />
-  </head>
-  <body>
-    <header></header>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta id="meta-descripcion" name="description" content="Detalle de producto artesanal de Mueblería Hermanos Jota.">
+  <link rel="icon" type="image/svg+xml" href="../assets/icons/logo.svg">
+  <title id="titulo-pagina">Detalle de Producto | Hermanos Jota</title>
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+  <a class="enlace-saltar" href="#contenido-principal">Saltar al contenido</a>
+  <header class="encabezado-sitio">
+    <div class="contenedor encabezado-contenido">
+      <a class="marca" href="../index.html" aria-label="Hermanos Jota - Inicio">
+        <img class="marca-logo" src="../assets/icons/logo.svg" alt="Logo Hermanos Jota" width="48" height="48">
+        <span class="marca-texto">
+          <span class="marca-nombre">Hermanos Jota</span>
+          <span class="marca-subtitulo">Muebles con historia</span>
+        </span>
+      </a>
 
-    <article class="contenedorProducto">
-      <div class="contenedorImagen">
-        <h1 class="nombreMueble">Aparador Uspallata</h1>
-        <img
-          src="/assets/images/Aparador Uspallata.png"
-          alt="Aparador Uspallata"
-          class="productoImagen"
-        />
-        <span class="precio">$40.000</span>
-      </div>
-      <div class="infoProducto">
-        <p class="descripcion">
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officia
-          dicta molestiae neque rem nobis architecto nulla asperiores sit
-          accusamus pariatur beatae facere ducimus, totam alias nisi.
-          Consequuntur accusamus impedit aspernatur! Lorem ipsum dolor, sit amet
-          consectetur adipisicing elit. Fugiat quae suscipit dolorem eligendi,
-          sequi officia perferendis quia, in esse provident, inventore dolores!
-          Beatae eveniet cumque dicta tenetur. Eius, eveniet quisquam!
-        </p>
+      <nav class="navegacion-principal" aria-label="Navegación principal">
+        <ul class="lista-navegacion">
+          <li><a class="enlace-navegacion" href="../index.html">Inicio</a></li>
+          <li><a class="enlace-navegacion" href="productos.html">Productos</a></li>
+          <li><a class="enlace-navegacion" href="contacto.html">Contacto</a></li>
+        </ul>
+      </nav>
 
-        <button>Agregar al Carrito</button>
+      <div class="acciones-encabezado">
+        <a class="indicador-carrito" href="productos.html" aria-label="Carrito con 0 productos">
+          <span>Carrito</span>
+          <span class="contador-carrito" data-cart-count>0</span>
+        </a>
       </div>
-    </article>
-  </body>
+    </div>
+  </header>
+
+  <main id="contenido-principal">
+    <div class="portada-detalle">
+      <div class="contenedor">
+        <nav aria-label="Miga de pan">
+          <p class="miga-pan">
+            <a href="../index.html">Inicio</a> /
+            <a href="productos.html">Productos</a> /
+            <span id="breadcrumb-nombre" aria-current="page">Detalle de Producto</span>
+          </p>
+        </nav>
+      </div>
+    </div>
+    <section class="seccion">
+      <div class="contenedor">
+        <div id="contenedor-detalle" class="distribucion-detalle">
+          <p class="estado-catalogo" role="status">Cargando información de la pieza...</p>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="pie-sitio">
+    <div class="contenedor pie-contenido">
+      <div class="pie-marca">
+        <span class="pie-titulo">Hermanos Jota</span>
+        <p>Casa Taller · Muebles artesanales, maderas nativas y diseño atemporal.</p>
+        <p style="font-size: 0.9rem; margin-top: 6px;">Av. San Juan 2847, San Cristóbal, CABA · Lunes a Viernes 10 a 19 hs, Sábados 10 a 14 hs.</p>
+      </div>
+      <ul class="enlaces-pie" aria-label="Enlaces del sitio">
+        <li><a href="../index.html">Inicio</a></li>
+        <li><a href="productos.html">Productos</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+      </ul>
+    </div>
+  </footer>
+  <script src="../js/productos.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", async () => {
+      const contenedor = document.getElementById("contenedor-detalle");
+      const breadcrumbNombre = document.getElementById("breadcrumb-nombre");
+      const tituloPagina = document.getElementById("titulo-pagina");
+      const metaDescripcion = document.getElementById("meta-descripcion");
+      const params = new URLSearchParams(window.location.search);
+      let productoId = params.get("id");
+
+      let catalogo = [];
+      try {
+        catalogo = await obtenerProductos(300);
+      } catch (e) {
+        catalogo = productos;
+      }
+      let producto = catalogo.find((p) => p.id === productoId);
+      if (!producto && catalogo.length > 0) {
+        producto = catalogo[0];
+        productoId = producto.id;
+      }
+
+      if (!producto) {
+        contenedor.innerHTML = `
+          <div style="text-align: center; grid-column: 1 / -1;">
+            <h2>Producto no encontrado</h2>
+            <p class="bajada" style="margin: 0 auto 20px;">La pieza que estás buscando no se encuentra disponible en nuestro catálogo actual.</p>
+            <a href="productos.html" class="boton boton-principal">Ver todos los productos</a>
+          </div>
+        `;
+        return;
+      }
+      tituloPagina.textContent = `${producto.nombre} | Hermanos Jota`;
+      breadcrumbNombre.textContent = producto.nombre;
+      if (metaDescripcion) {
+        metaDescripcion.setAttribute("content", producto.descripcion);
+      }
+
+      const rutaImg = normalizarRutaImagen(producto.imagen, true);
+      contenedor.innerHTML = `
+        <div class="galeria-detalle">
+          <div class="imagen-detalle-marco">
+            <img id="imagen-producto" src="${rutaImg}" alt="${producto.alt}" width="800" height="600">
+          </div>
+        </div>
+
+        <article class="info-detalle" aria-labelledby="titulo-pieza">
+          <div>
+            <span class="categoria-tag" style="margin-bottom: 8px;">${producto.categoria}</span>
+            <h1 id="titulo-pieza">${producto.nombre}</h1>
+            <p class="precio-grande">${formatearPrecio(producto.precio)}</p>
+          </div>
+
+          <div>
+            <h3>Descripción</h3>
+            <p class="bajada">${producto.descripcion}</p>
+          </div>
+          <div class="bloque-fabricacion">
+            <h3>Detalles de Fabricación y Materiales</h3>
+            <dl class="lista-especificaciones">
+              <div>
+                <dt>Materiales y Origen</dt>
+                <dd>${producto.detallesFabricacion.materiales}</dd>
+              </div>
+              <div>
+                <dt>Medidas</dt>
+                <dd>${producto.detallesFabricacion.medidas}</dd>
+              </div>
+              <div>
+                <dt>Terminación y Acabado</dt>
+                <dd>${producto.detallesFabricacion.terminacion}</dd>
+              </div>
+              <div>
+                <dt>Garantía de Taller</dt>
+                <dd>${producto.detallesFabricacion.garantia}</dd>
+              </div>
+            </dl>
+          </div>
+          <div class="acciones-compra">
+            <button id="btn-agregar-detalle" type="button" class="boton boton-principal" data-id="${producto.id}">
+              Añadir al Carrito
+            </button>
+            <a href="contacto.html" class="boton boton-secundario">Consultar por encargo a medida</a>
+          </div>
+        </article>
+      `;
+      const btnAgregar = document.getElementById("btn-agregar-detalle");
+      if (btnAgregar) {
+        btnAgregar.addEventListener("click", () => {
+          agregarAlCarrito(producto.id, 1);
+          mostrarNotificacionCarrito(`"${producto.nombre}" añadido al carrito`);
+        });
+      }
+    });
+  </script>
+</body>
 </html>
