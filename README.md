@@ -9,5 +9,4 @@ Repositorio creado para realizar las actividades del curso.
 | Referente | Matias Viana Carlsson | matiascarlsson1@gmail.com | matiascarlsson |
 | Integrante | Lautaro Joaquín Quevedo | quevedojoaquin@outlook.com | LautaroJQ |
 | Integrante | Tiago Moyano | tiagomoyano15@gmail.com  | TiagoMoyano |
-| Integrante | Joaquin Marini | joamarini8@gmail.com | Joamarini |
 | Integrante | Dante Lamorte | dantelamorte@outlook.com | DanteLamorte |
