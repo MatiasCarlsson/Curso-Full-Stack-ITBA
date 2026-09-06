@@ -1,0 +1,245 @@
+:root {
+    --siena-tostado: #A0522D;
+    --verde-salvia: #87A96B;
+    --alabastro-calido: #F5E6D3;
+    --vara-de-oro: #D4A437;
+    --rosa-polvoriento: #C47A6D;
+
+    --color-primary: var(--siena-tostado);
+    --color-secondary: var(--verde-salvia);
+    --bg-primary: var(--alabastro-calido);
+    --color-accent: var(--vara-de-oro);
+    --color-accent-soft: var(--rosa-polvoriento);
+
+    --font-primary: 'Inter', sans-serif;
+    --font-secondary: 'Playfair Display', Georgia
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--font-primary);
+}
+
+body{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--bg-primary);
+}
+
+.hero-section {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+header{
+    position: relative;
+    background-color: var(--bg-primary);
+}
+
+main{
+    display: flex;
+    flex-direction: column;
+    flex:1;
+}
+
+footer{
+    background-color: var(--bg-primary);
+    padding: 2rem;
+}
+
+footer * {
+    text-align: center;
+}
+
+footer div {
+    margin:1rem;
+}
+
+
+nav{
+    display: flex;
+    margin: 0 auto;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+}
+
+.menu-btn {
+    display: block;
+    cursor: pointer;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    transition: all .2s ease;
+    will-change: transform;
+    color: var(--color-primary);
+    margin: 1rem;
+}
+
+.menu-btn:hover {
+    transform: scale(1.1);
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+
+    position: absolute;
+    top:100%;
+    left: 0;
+    width: 100%;
+    background-color: var(--bg-primary);
+    padding: 1rem 0;
+    text-align: center;
+    gap:1rem;
+
+
+
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    padding: 0;
+    transform: translateY(-10px);
+    transition: 
+        max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+        opacity 0.3s ease,
+        transform 0.3s ease-in,
+        padding 0.3s ease;
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
+
+    z-index: 20;
+}
+
+.nav-links.active {
+    max-height: 300px;
+    opacity: 1;
+    padding: 1rem 0;
+    transform: translateY(0);
+}
+
+.nav-links a{
+    will-change: transform;
+    display: block;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    color: var(--color-primary);
+    font-weight: bold;
+    font-size: 12pt;
+    line-height: 1.6;
+}
+
+.nav-links a:hover {
+    transform: translateY(-2px);
+}
+
+.brand-container {
+    display: flex;
+    align-items: center;
+}
+
+.title {
+    color: var(--color-primary);
+    font-size: 1.5rem;
+    letter-spacing: 0.1em;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.logo {
+    width: 120px;
+    margin: 5px;
+}
+
+.hero {
+    position: relative;
+    flex: 1;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.hero-img {
+    position: absolute;
+    width: 100px;
+    top: 90%;
+    left: 0;
+    object-fit: cover;
+    z-index: 1;
+}
+
+.email-contact, .instagram-contact {
+    text-decoration: none;
+    color: var(--color-secondary);
+}
+
+.btn {
+    padding: 1rem;
+    text-decoration: none;
+    border:2px solid var(--rosa-polvoriento);
+    border-radius: 25px;
+    display: inline;
+    align-self: center;
+    color: var(--color-primary);
+}
+
+.product-card {
+    height: 30%;
+    width: 50%;
+    background-color: #000;
+    margin: 1rem auto;
+    border-top-right-radius: 45%;
+    border-top-left-radius: 45%;
+}
+
+h1 {
+    font-weight: 400;
+}
+
+@media (min-width: 768px) {
+    .title {
+        font-size: 2rem;
+    }
+
+    .menu-btn {
+        display: none;
+    }
+
+    .nav-links {
+        flex-direction: row;
+        width: auto;
+        position: inherit;
+        gap: 2rem;
+
+        box-shadow: none;
+        max-height: none;
+        opacity: 1;
+        overflow: visible;
+        padding: 0;
+        transform: none;
+        transition: none;        
+    }
+
+    .nav-links a {
+        display: block;
+    }
+
+    footer {
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        gap:1rem;
+    }
+
+    footer * {
+        text-align: left;
+    }
+
+    .business-info {
+        border-right: 1px solid #000;
+    }
+}
